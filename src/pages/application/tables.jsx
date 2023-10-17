@@ -5,8 +5,13 @@ import useStore from '../../../store'
 import Loading from '../../components/Loading';
 
 function Tables() {
-    const { applicantItems, getApplicants } = useStore()
+    const { applicantItems, getApplicants, deleteApplicants } = useStore()
     const [loading, setLoading] = useState(true);
+
+    const handleDeleteApplicants = (itemId) => {
+        deleteApplicants(itemId)
+    }
+
     const handleApplicants = async() => {
         try {
             await getApplicants()
@@ -81,7 +86,7 @@ function Tables() {
                         </td>
                         <td className="px-6 py-4 flex flex-row items-center gap-x-2">
                             <button className="bg-yellow-400 p-2 text-white rounded-md"><FaRegEdit/></button>
-                            <button className="bg-red-400 p-2 text-white rounded-md"><FaTrash/></button>
+                            <button className="bg-red-400 p-2 text-white rounded-md" onClick={() => handleDeleteApplicants(item.id)}><FaTrash/></button>
                         </td>
                     </tr>
                 ))

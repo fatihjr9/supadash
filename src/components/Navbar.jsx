@@ -13,7 +13,7 @@ function Navbar() {
       ];
     return (
       <div className="flex flex-col bg-white drop-shadow-sm fixed top-0 w-full z-50">
-          <section className="px-16 py-4 flex flex-row items-center justify-between border-b">
+          <section className="md:px-16 py-4 flex flex-row items-center justify-between border-b">
               <img src="./logos.svg" alt="" />
               <div className="flex flex-row items-center gap-x-4">
                 <Input placeholder="Search.." className="w-80"/>
@@ -22,7 +22,7 @@ function Navbar() {
                 </Dropdown>
               </div>
           </section>
-          <section className="px-16 py-4 flex flex-row items-center gap-x-4 border-b">
+          <section className="flex px-16 py-4 flex-row items-center gap-x-4 border-b">
               <NavLink to="/">Dashboard</NavLink>
               <NavLink to="/schedule">Schedules</NavLink>
               <NavLink to="/project">Projects</NavLink>
