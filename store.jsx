@@ -4,6 +4,12 @@ import { Alert } from "antd";
 
 const useStore = create((set) => ({
   applicantItems: [],
+  teamItems: [],
+  // members section
+  getTeams: async () => {
+    const { data } = await supabase.from("teams").select("*");
+    data ? set({ teamItems: data }) : <Alert>Nothing</Alert>;
+  },
   // applicants section
   getApplicants: async () => {
     const { data } = await supabase.from("applications").select("*");
