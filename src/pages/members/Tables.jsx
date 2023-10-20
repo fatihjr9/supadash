@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
 function Tables() {
-    const { teamItems, getTeams } = useStore();
+    const { teamItems, getTeams, deleteMembers } = useStore();
     const [loading, setLoading] = useState(true);
+
+    const handleDeleteTeams = (itemId) => {
+        deleteMembers(itemId)
+    }
 
     const handleTeams = async() => {
         try {
@@ -35,7 +39,7 @@ function Tables() {
                             Position
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Participants
+                            Salary
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Status
@@ -62,7 +66,7 @@ function Tables() {
                                     {item.position}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {item.salary}
+                                    Rp {item.salary}
                                 </td>
                                 <td className="px-6 py-4">
                                     {item.documents}
@@ -72,7 +76,7 @@ function Tables() {
                                 </td>
                                 <td className="px-6 py-4 flex flex-row items-center gap-x-2">
                                     <button className="bg-yellow-400 p-2 text-white rounded-md"><FaRegEdit/></button>
-                                    <button className="bg-red-400 p-2 text-white rounded-md" ><FaTrash/></button>
+                                    <button className="bg-red-400 p-2 text-white rounded-md" onClick={() => handleDeleteTeams(item.id)}><FaTrash/></button>
                                 </td>
                             </tr>
                         ))

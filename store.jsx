@@ -5,10 +5,26 @@ import { Alert } from "antd";
 const useStore = create((set) => ({
   applicantItems: [],
   teamItems: [],
+  projectItems: [],
+  // Project section
+  getProject: async () => {
+    const { data } = await supabase.from("project").select("*")
+    data ? set({projectItems: data}) : <Alert>No data available</Alert>;
+  },
   // members section
   getTeams: async () => {
     const { data } = await supabase.from("teams").select("*");
-    data ? set({ teamItems: data }) : <Alert>Nothing</Alert>;
+    data ? set({ teamItems: data }) : <Alert>No data available</Alert>;
+  },
+  deleteMembers: async(itemId) => {
+    try {
+      await supabase.from("teams").delete().eq("id", itemId);
+      set((state) => ({
+        teamItems: state.applicantItems.filter((team) => team.id !== itemId),
+      }));
+    } catch (error) {
+      console.error("Error deleting team:", error);
+    }
   },
   // applicants section
   getApplicants: async () => {

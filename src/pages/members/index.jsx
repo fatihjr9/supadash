@@ -3,7 +3,7 @@ import Tables from "./Tables"
 function Members() {
   return (
     <Layout>
-      <div className="px-16 mt-8">
+      <div className="px-8 md:px-16 mt-8">
         <h5 className="text-2xl font-medium">Members</h5>
         <Tables/>
       </div>

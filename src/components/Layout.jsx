@@ -5,7 +5,7 @@ function Layout({children}) {
   return (
     <div>
         <Navbar/>
-        <div className="mt-36">
+        <div className="mt-44 md:mt-36">
           {children}
         </div>
     </div>
