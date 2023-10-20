@@ -12,7 +12,6 @@ import Applications from './pages/application/index.jsx';
 import Projects from './pages/projects/index.jsx';
 // style
 import './index.css'
-import CreateProject from './pages/projects/create.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,10 +21,6 @@ const router = createBrowserRouter([
   {
     path: "/project",
     element: (<Projects/>),
-  },
-  {
-    path: "/project/create",
-    element: (<CreateProject/>),
   },
   {
     path: "/schedule",
